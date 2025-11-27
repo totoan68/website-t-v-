@@ -1,13 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TiLoTrip — Website đặt vé</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TiLoTrip — Website đặt vé</title>
 
+ 
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
 <header>
   <div class="logo">TiLoTrip</div>
   <nav>
@@ -26,116 +28,111 @@
 
 <main class="container">
   <section id="home" class="hero">
-
-  <div class="hero-bg">
-    <img src="z7246009831037_838b32b14f996afe8ef39fe65b505147.jpg">
-    <div class="hero-overlay"></div>
-  </div>
-
-  <div class="hero-text">
-    <h1>Đặt vé phương tiện giao thông — nhanh chóng, an toàn, giá tốt</h1>
-    <p>So sánh giá vé giữa xe, tàu và máy bay. Tìm chuyến phù hợp và đặt vé chỉ trong vài phút.</p>
-  </div>
-
-  <aside class="search-card">
-    <div style="font-weight:600;margin-bottom:8px">Tìm kiếm chuyến</div>
-    <div class="form-row">
-      <select id="vehicle">
-        <option value="xe">🚌 Xe khách</option>
-<option value="tau">🚆 Tàu hỏa</option>
-<option value="maybay">✈️ Máy bay</option>
-
-      </select>
-      <input id="from" placeholder="Điểm đi (Hà Nội)">
+    <div class="hero-bg">
+      <img src="z7246009831037_838b32b14f996afe8ef39fe65b505147.jpg" alt="">
+      <div class="hero-overlay"></div>
     </div>
-    <div class="form-row">
-      <input id="to" placeholder="Điểm đến (Đà Nẵng)">
-      <input id="date" type="date" class="small"/>
+
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Đặt vé phương tiện giao thông — nhanh chóng, an toàn, giá tốt</h1>
+        <p>So sánh giá vé giữa xe, tàu và máy bay. Tìm chuyến phù hợp và đặt vé chỉ trong vài phút.</p>
+      </div>
+
+      <aside class="search-card">
+        <div class="title">Tìm kiếm chuyến</div>
+
+        <div class="form-row">
+          <select id="vehicle">
+            <option value="xe">🚌 Xe khách</option>
+            <option value="tau">🚆 Tàu hỏa</option>
+            <option value="maybay">✈️ Máy bay</option>
+          </select>
+          <input id="from" placeholder="Điểm đi (Hà Nội)">
+        </div>
+
+        <div class="form-row">
+          <input id="to" placeholder="Điểm đến (Đà Nẵng)">
+          <input id="date" type="date" class="small">
+        </div>
+
+        <button class="btn" id="searchBtn">Tìm kiếm chuyến</button>
+        <div class="results" id="results"></div>
+      </aside>
     </div>
-    <button class="btn" id="searchBtn">Tìm kiếm chuyến</button>
-    <div class="results" id="results"></div>
-  </aside>
-
-</section>
-
-
+  </section>
 
   <section id="booking">
     <div class="panel" id="booking-panel">
       <h3>Đặt vé</h3>
-      <div id="selected-trip" style="margin-bottom:12px;color:var(--muted)">Chưa có chuyến nào được chọn.</div>
-      <div style="display:flex;gap:18px;flex-wrap:wrap">
-        <div style="flex:1;min-width:260px">
+      <div id="selected-trip" class="muted">Chưa có chuyến nào được chọn.</div>
+
+      <div class="booking-layout">
+        <div class="left">
           <div class="panel">
-            <div style="font-weight:600;margin-bottom:8px">Sơ đồ ghế</div>
+            <h4>Sơ đồ ghế</h4>
             <div class="seat-map" id="seatMap"></div>
-            <div style="margin-top:10px;font-size:13px;color:var(--muted)">Chú giải: <span style="color:var(--accent)">■</span> Trống &nbsp; <span style="color:#7f1d1d">■</span> Đã đặt &nbsp; <span style="color:#b45309">■</span> Đang chọn</div>
           </div>
+
           <div class="panel">
-            <div style="font-weight:600;margin-bottom:8px">Tóm tắt đặt vé</div>
-            <div id="orderSummary">Chưa có ghế được chọn.</div>
+            <h4>Tóm tắt đặt vé</h4>
+            <div id="orderSummary">Chưa chọn ghế.</div>
           </div>
         </div>
-        <div style="width:360px">
-          <form id="bookingForm" class="panel">
-            <div style="font-weight:600;margin-bottom:8px">Thông tin hành khách</div>
-            <div class="form-group"><label>Họ và tên</label><input id="name" required /></div>
-            <div class="form-group"><label>Số điện thoại</label><input id="phone" required /></div>
-            <div class="form-group"><label>Email nhận vé</label><input id="email" type="email" required /></div>
-            <div class="form-group"><label>Phương thức thanh toán</label>
-              <select id="payment">
-                <option value="momo">Ví điện tử (MoMo)</option>
-                <option value="bank">Chuyển khoản</option>
-                <option value="card">Thẻ ATM nội địa</option>
-              </select>
+
+        <div class="right">
+          <form id="bookingForm" class="panel" onsubmit="return false;">
+            <h4>Thông tin hành khách</h4>
+
+            <label>Họ tên</label>
+            <input id="name" required>
+
+            <label>Số điện thoại</label>
+            <input id="phone" required>
+
+            <label>Email</label>
+            <input id="email" type="email" required>
+
+            <label>Thanh toán</label>
+            <select id="payment">
+              <option value="momo">Ví MoMo</option>
+              <option value="bank">Chuyển khoản</option>
+              <option value="card">ATM nội địa</option>
+            </select>
+
+            <div class="total-line">
+              <span>Tổng: </span><strong id="totalPrice">0 đ</strong>
             </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
-              <div style="font-weight:700">Tổng: <span id="totalPrice">0 đ</span></div>
-              <button class="btn" type="button" id="confirmBooking">Thanh toán & Nhận vé</button>
-            </div>
+            <button type="button" class="btn" id="confirmBooking">Thanh toán</button>
           </form>
         </div>
       </div>
     </div>
   </section>
 
- 
   <section id="tracking">
-    <div class="panel tracking">
+    <div class="panel tracking-box">
       <div>
         <h3>Theo dõi vé</h3>
-        <p style="color:var(--muted)">Nhập mã vé để kiểm tra trạng thái.</p>
-        <div style="display:flex;gap:8px;margin-top:8px">
-          <input id="trackingCode" placeholder="Mã vé (ví dụ: TTT3333)">
-          <button class="btn" id="checkTicket">Kiểm tra vé</button>
-        </div>
-        <div style="margin-top:12px" id="trackingResult"></div>
+        <input id="trackingCode" placeholder="Nhập mã vé">
+        <button class="btn" id="checkTicket">Kiểm tra</button>
+        <div id="trackingResult"></div>
       </div>
-      <aside style="padding:12px;background:#fff;border-radius:10px;border:1px solid #eef6ff">
-        <h4 style="margin:0 0 8px">Lịch sử đặt vé (cục bộ)</h4>
-        <div id="historyList" style="font-size:14px;color:var(--muted)">Chưa có giao dịch.</div>
+
+      <aside class="history-panel">
+        <h4>Lịch sử</h4>
+        <div id="historyList" class="muted">Chưa có giao dịch.</div>
       </aside>
     </div>
   </section>
-
-
-  <section id="support">
-    <div class="panel">
-      <h3>Hỗ trợ khách hàng</h3>
-      <ul>
-        <li>Hotline: 1900-1234 (24/7)</li>
-        <li>Email: support@tilotrip.vn</li>
-        <li>FAQ: Chính sách đổi, hủy và hoàn tiền</li>
-      </ul>
-    </div>
-  </section>
-
 </main>
 
 <footer>
-  &copy; 2025 tilo trip
+  © 2025 TiLoTrip
 </footer>
 
+
+<script src="script.js"></script>
 
 </body>
 </html>
